@@ -1,0 +1,9 @@
+# Vagrant specific
+.vagrant/
+share/
+
+# Logfiles
+*.log
+
+# OS specific
+.DS_Store
