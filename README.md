@@ -13,8 +13,8 @@
 * nano
 
 ## Version Requirements
-* VirtualBox >= 6.0.0
-* Vagrant >= 2.2.2
+* VirtualBox >= 6.0.4
+* Vagrant >= 2.2.4
 
 ## Getting started
 1. Install the VirtualBox Guest Additions plugin for Vagrant with `vagrant plugin install vagrant-vbguest`
