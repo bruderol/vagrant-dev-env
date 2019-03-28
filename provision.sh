@@ -30,18 +30,22 @@ echo "INSTALLING OPENJDK" \
   && echo "OPENJDK DONE"
 
 #Maven
+MAVEN_VERSION=3.6.0
+
 echo "INSTALLING MAVEN" \
-  && wget -q http://www-eu.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz -P ${DOWNLOAD_DIR} \
+  && wget -q http://www-eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz -P ${DOWNLOAD_DIR} \
   && sudo mkdir /opt/maven \
-  && sudo tar xzf ${DOWNLOAD_DIR}/apache-maven-3.6.0-bin.tar.gz -C /opt/maven --strip-components=1 \
+  && sudo tar xzf ${DOWNLOAD_DIR}/apache-maven-${MAVEN_VERSION}-bin.tar.gz -C /opt/maven --strip-components=1 \
   && sudo chown -R vagrant:vagrant /opt/maven \
   && echo "MAVEN DONE"
 
 #Gradle
+GRADLE_VERSION=5.1.1
+
 echo "INSTALLING GRADLE" \
-  && wget -q https://services.gradle.org/distributions/gradle-5.1.1-bin.zip -P ${DOWNLOAD_DIR} \
-  && unzip -q ${DOWNLOAD_DIR}/gradle-5.1.1-bin.zip -d ${DOWNLOAD_DIR} \
-  && sudo mv ${DOWNLOAD_DIR}/gradle-5.1.1 /opt/gradle \
+  && wget -q https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -P ${DOWNLOAD_DIR} \
+  && unzip -q ${DOWNLOAD_DIR}/gradle-${GRADLE_VERSION}-bin.zip -d ${DOWNLOAD_DIR} \
+  && sudo mv ${DOWNLOAD_DIR}/gradle-${GRADLE_VERSION} /opt/gradle \
   && sudo chown -R vagrant:vagrant /opt/gradle \
   && echo "GRADLE DONE"
 
@@ -65,10 +69,12 @@ echo "INSTALLING OH MY ZSH" \
   && echo "ZSH DONE"
 
 #IntelliJ
+INTELLIJ_VERSION=2019.1
+
 echo "INSTALLING INTELLIJ" \
-  && wget -q https://download.jetbrains.com/idea/ideaIU-2018.3.3.tar.gz -P ${DOWNLOAD_DIR} \
+  && wget -q https://download.jetbrains.com/idea/ideaIU-${INTELLIJ_VERSION}.tar.gz -P ${DOWNLOAD_DIR} \
   && sudo mkdir /opt/intellij \
-  && sudo tar xzf ${DOWNLOAD_DIR}/ideaIU-2018.3.3.tar.gz -C /opt/intellij --strip-components=1 \
+  && sudo tar xzf ${DOWNLOAD_DIR}/ideaIU-${INTELLIJ_VERSION}.tar.gz -C /opt/intellij --strip-components=1 \
   && sudo chown -R vagrant:vagrant /opt/intellij \
   && mkdir -p ${HOME_DIR}/.local/share/applications \
   && echo '[Desktop Entry]
