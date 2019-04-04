@@ -49,12 +49,6 @@ echo "INSTALLING GRADLE" \
   && sudo chown -R vagrant:vagrant /opt/gradle \
   && echo "GRADLE DONE"
 
-#NodeJS
-echo "INSTALLING NODEJS" \
-  && sudo curl -sL https://rpm.nodesource.com/setup_11.x | sudo bash - \
-  && sudo dnf -q install -y nodejs \
-  && echo "NODEJS DONE"
-
 #Firefox
 echo "INSTALLING FIREFOX" \
   && sudo dnf -q install -y firefox \
@@ -67,6 +61,13 @@ echo "INSTALLING OH MY ZSH" \
   && cp /vagrant/.zshrc ${HOME_DIR}/.zshrc \
   && sudo usermod -s /bin/zsh vagrant \
   && echo "ZSH DONE"
+
+#NVM
+NVM_VERSION=0.34.0
+
+echo "INSTALLING NVM" \
+  && wget -qO- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash \
+  && echo "NVM DONE"
 
 #IntelliJ
 INTELLIJ_VERSION=2019.1
@@ -88,6 +89,37 @@ Categories=Development;IDE;
 Terminal=false
 StartupWMClass=jetbrains-idea' > ${HOME_DIR}/.local/share/applications/jetbrains-idea.desktop \
   && echo "INTELLIJ DONE"
+
+#Docker
+echo "INSTALLING DOCKER" \
+  && sudo dnf remove docker \
+    docker-client \
+    docker-client-latest \
+    docker-common \
+    docker-latest \
+    docker-latest-logrotate \
+    docker-logrotate \
+    docker-selinux \
+    docker-engine-selinux \
+    docker-engine || true \
+  && sudo dnf -q install -y dnf-plugins-core \
+  && sudo dnf config-manager \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo \
+  && sudo dnf -q install -y docker-ce docker-ce-cli containerd.io \
+  && sudo groupadd docker || true \
+  && sudo usermod -aG docker vagrant \
+  && sudo systemctl enable docker \
+  && sudo systemctl start docker \
+  && echo "DOCKER DONE"
+
+#docker-compose
+DOCKERCOMPOSE_VERSION=1.24.0
+
+echo "INSTALLING DOCKER-COMPOSE" \
+  && sudo curl -s -L "https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
+  && sudo chmod +x /usr/local/bin/docker-compose \
+  && echo "DOCKER-COMPOSE DONE"
 
 #Gnome
 echo "INSTALLING GNOME" \

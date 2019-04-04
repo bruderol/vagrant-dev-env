@@ -2,7 +2,7 @@
 
 ## Tools included
 * Git
-* Node.js
+* nvm
 * Atom Text Editor
 * IntelliJ Ultimate
 * Maven
@@ -11,6 +11,8 @@
 * oh-my-zsh
 * Firefox
 * nano
+* Docker
+* docker-compose
 
 ## Version Requirements
 * VirtualBox >= 6.0.4
