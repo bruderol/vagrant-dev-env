@@ -148,6 +148,12 @@ function setupLocale() {
     && echo "LOCALE DONE"
 }
 
+function setupWorkspace() {
+  echo "SETTING UP WORKSPACE" \
+    && mkdir ${HOME_DIR}/workspace \
+    && echo "WORKSPACE DONE"
+}
+
 function cleanup() {
   echo "CLEAN UP" \
     && sudo rm -rf ${DOWNLOAD_DIR}/* \
@@ -169,4 +175,5 @@ installDocker
 installDockerCompose
 installGnome
 setupLocale
+setupWorkspace
 cleanup
