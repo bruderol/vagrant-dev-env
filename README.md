@@ -11,6 +11,7 @@
 * oh-my-zsh
 * Firefox
 * nano
+* Python 3
 * Docker
 * docker-compose
 

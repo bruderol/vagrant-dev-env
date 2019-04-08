@@ -154,6 +154,12 @@ function setupWorkspace() {
     && echo "WORKSPACE DONE"
 }
 
+function setupPython() {
+  echo "SETTING UP PYTHON" \
+    && sudo ln -s /usr/bin/python3 /usr/bin/python \
+    && echo "PYTHON DONE"
+}
+
 function cleanup() {
   echo "CLEAN UP" \
     && sudo rm -rf ${DOWNLOAD_DIR}/* \
@@ -176,4 +182,5 @@ installDockerCompose
 installGnome
 setupLocale
 setupWorkspace
+setupPython
 cleanup
