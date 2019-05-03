@@ -24,3 +24,8 @@
 2. Create the shared folder `share` in the repository root directory
 3. Start the initial setup with `vagrant up`
 4. Reload the Virtual Machine with `vagrant reload`
+
+## Authors
+
+VM setup provided by @SimonMueller from here:
+https://github.com/SimonMueller/vagrant-dev-env
