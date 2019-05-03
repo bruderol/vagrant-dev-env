@@ -14,5 +14,5 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
    config.vm.provision :shell, path: "provision.sh", privileged: false
-   config.vm.synced_folder "share/", "/home/vagrant/share"
+   config.vm.synced_folder "shared/", "/home/vagrant/shared"
 end

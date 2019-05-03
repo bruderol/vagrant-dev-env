@@ -1,6 +1,10 @@
+# IntelliJ
+*.iml
+.idea
+
 # Vagrant specific
 .vagrant/
-share/
+shared/**
 
 # Logfiles
 *.log
