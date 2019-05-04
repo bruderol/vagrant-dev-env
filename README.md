@@ -1,4 +1,4 @@
-# Vagrant Developer VM
+# Vagrant Developer Environment
 
 ## Tools Included
 
