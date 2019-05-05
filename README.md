@@ -18,7 +18,7 @@
 
 ## Prerequisites
 
-For running this vagrant VM, you have to install following tools:
+To run this Vagrant VM, you have to install the following tools:
 * VirtualBox >= 6.0.4
 * Vagrant >= 2.2.4
 
