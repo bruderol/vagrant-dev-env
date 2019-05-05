@@ -36,7 +36,7 @@ For running this vagrant VM, you have to install following tools:
 6. Once the installation is done you should see something like: `CLEANUP DONE`
 7. Use `vagrant reload` to start the VM
 
-## Using the VM
+### Using the VM
 
 * Restart and bring the virtual machine up in graphical mode with: `vagrant reload`
 * Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes in your Vagrantfile)
