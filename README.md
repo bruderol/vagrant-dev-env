@@ -44,5 +44,4 @@ For running this vagrant VM, you have to install following tools:
 
 ## Authors
 
-VM setup provided by @SimonMueller from here:
-https://github.com/SimonMueller/vagrant-dev-env
+VM setup provided by [@SimonMueller](https://github.com/SimonMueller)
