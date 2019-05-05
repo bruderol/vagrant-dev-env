@@ -41,6 +41,10 @@ For running this vagrant VM, you have to install following tools:
 * Restart and bring the virtual machine up in graphical mode with: `vagrant reload`
 * Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes in your Vagrantfile)
 
+## Known issues
+
+* When 3D acceleration is enabled the use of Chromium is discouraged as it can crash the Virtual Machine
+
 ## Authors
 
 VM setup provided by [@SimonMueller](https://github.com/SimonMueller)
