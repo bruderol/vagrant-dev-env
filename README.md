@@ -34,12 +34,14 @@ For running this vagrant VM, you have to install following tools:
 4. Install the VirtualBox Guest Additions plugin for Vagrant with `vagrant plugin install vagrant-vbguest`
 5. Start the setup with `vagrant up` (this may take a while - typically around 30 minutes in total - so take a coffee and relax! :coffee: )
 6. Once the installation is done you should see something like: `CLEANUP DONE`
-7. Use `vagrant reload` to start the VM
+7. Use `vagrant reload` to bring the virtual machine up in graphical mode
 
 ### Using the VM
 
-* Restart and bring the virtual machine up in graphical mode with: `vagrant reload`
-* Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes in your Vagrantfile)
+1. Start the VM with `vagrant up`
+2. The default user is "__vagrant__" with the password "__vagrant__"
+
+**Note**: Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes in your Vagrantfile)
 
 ## Known issues
 
