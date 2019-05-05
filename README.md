@@ -39,7 +39,7 @@ For running this vagrant VM, you have to install following tools:
 
 ## Using the VM
 
-* Restarting the virtual machine: `vagrant reload`
+* Restart and bring the virtual machine up in graphical mode with: `vagrant reload`
 * Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes)
 
 ## Authors
