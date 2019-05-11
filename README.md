@@ -29,9 +29,9 @@ For running this vagrant VM, you have to install following tools:
 ### Installing the VM
 
 1. Make sure you have a reliable internet connection ;-)
-2. Only for Windows users (others can jump to next step):
-    * make sure Hyper-V support is turned off, as explained here: https://ugetfix.com/ask/how-to-disable-hyper-v-in-windows-10/
-    * VirtualBox will not work with HyperV turned on
+2. Only on Windows (users of a real OS can jump to next step :wink: ):
+    * make sure Hyper-V support is turned off (VirtualBox will not work with HyperV turned on) 
+      * see here for how to do this: https://www.poweronplatforms.com/enable-disable-hyper-v-windows-10-8/
 3. Open the console in the same directory where you downloaded these configuration sources and where the `Vagrantfile` is
 4. Install the VirtualBox Guest Additions plugin for Vagrant with `vagrant plugin install vagrant-vbguest`
 5. Start the setup with `vagrant up` (this may take a while - typically around 30 minutes in total - so take a coffee and relax! :-D
