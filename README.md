@@ -1,6 +1,6 @@
 # Vagrant Developer Environment
 
-This development environment is targeted to be used in courses about Java Software Development 
+This development environment is targeted for use in courses about Java Software Development 
 and therefore contains all tools typically needed in such a setup.
 
 ## Tools Included
