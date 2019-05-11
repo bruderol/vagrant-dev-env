@@ -1,7 +1,7 @@
 # Vagrant Developer Environment
 
 This development environment is targeted for use in courses about Java Software Development 
-and therefore contains all tools typically needed in such a setup.
+and therefore contains most important tools typically needed in such a setup.
 
 ## Tools Included
 
@@ -28,7 +28,6 @@ To run this Vagrant VM, you have to install the following tools:
 
 ### Installing the VM
 
-
 1. Make sure you have a reliable internet connection :wink:
 2. Only on Windows (users of a real OS can jump to next step :wink: ):
     * Make sure Hyper-V support is turned off (VirtualBox will not work with HyperV turned on)
@@ -42,14 +41,14 @@ To run this Vagrant VM, you have to install the following tools:
 ### Using the VM
 
 1. Start the VM with `vagrant up`
-2. The default user is "__vagrant__" with the password "__vagrant__"
+2. The default user is `vagrant` with the password `vagrant`
 
 **Note**: Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes in your Vagrantfile)
 
 ### Configure the VM
 
 To increase performance :rocket:
-* you can configure in VirtualBox UI that the VM gets more memory or cpu. For this you have to stop the VM first. Then you can go to VirtualBox UI and change it on the VM under `...`.
+* In VirtualBox UI you may configure that the VM gets more memory or cpu: Stop the VM first and then change it under `Change/System` on the VM.
 
 ## Known Issues
 

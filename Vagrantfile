@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.box_version = "29.20181024.1"
   config.vm.provider "virtualbox" do |v|
   	v.memory = 6000
-  	v.cpus = 3
+  	v.cpus = 2
     v.gui = true
   	v.name = "Developer Environment"
     v.customize ["modifyvm", :id, "--vram", "128"]
