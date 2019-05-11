@@ -1,5 +1,8 @@
 # Vagrant Developer Environment
 
+This development environment is targeted to be used in courses about Java Software Development 
+and therefore contains all tools typically needed in such a setup.
+
 ## Tools Included
 
 * Git
@@ -9,7 +12,6 @@
 * Open JDK
 * Python 3
 * Maven
-* Gradle
 * Docker
 * docker-compose
 * Atom Text Editor
@@ -26,23 +28,34 @@ For running this vagrant VM, you have to install following tools:
 
 ### Installing the VM
 
-
 1. Make sure you have a reliable internet connection ;-)
-2. On Windows:
+2. Only for Windows users (others can jump to next step):
     * make sure Hyper-V support is turned off, as explained here: https://ugetfix.com/ask/how-to-disable-hyper-v-in-windows-10/
     * VirtualBox will not work with HyperV turned on
-3. Open console in this directory with the downloaded config files
+3. Open the console in the same directory where you downloaded these configuration sources and where the `Vagrantfile` is
 4. Install the VirtualBox Guest Additions plugin for Vagrant with `vagrant plugin install vagrant-vbguest`
-5. Start the setup with `vagrant up` (this may take a while - typically around 30 minutes in total - so take a coffee and relax! :-D )
+5. Start the setup with `vagrant up` (this may take a while - typically around 30 minutes in total - so take a coffee and relax! :-D
 6. Once the installation is done you should see something like: `CLEANUP DONE`
 7. Use `vagrant reload` to start the VM
 
-## Using the VM
+### Using the VM
 
 * Restarting the virtual machine: `vagrant reload`
 * Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes)
 
-## Authors
+### Configure the VM
 
-VM setup provided by @SimonMueller from here:
-https://github.com/SimonMueller/vagrant-dev-env
+To increase performance you can configure in VirtualBox UI that the VM gets more memory or cpu. For this you have to stop the VM first. Then you can go to VirtualBox UI and change it on the VM under `...`.
+
+
+## Background Information
+
+### Why is VirtualBox used and not VMWare?
+
+Vagrant only supports VirtualBox in a free plan, if you want to use it with VMWare you have to pay. 
+
+For a commercial project it might be a good idea to pay and use VMWare instead, because, the integration with VMWare should be much more performant. 
+
+### Authors
+
+VM setup provided by @SimonMueller and @bruderol

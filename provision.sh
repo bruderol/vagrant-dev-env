@@ -172,7 +172,8 @@ installAtom
 installGit
 installOpenJdk
 installMaven
-installGradle
+# disable gradle, cause download page sometimes tooo slow, and we better use gradle wrapper
+# installGradle
 installFirefox
 installOhMyZsh
 installNvm
