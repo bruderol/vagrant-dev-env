@@ -39,7 +39,7 @@ To run this Vagrant VM, you have to install the following tools:
 ### Using the VM
 
 1. Start the VM with `vagrant up`
-2. The default user is "__vagrant__" with the password "__vagrant__"
+2. The default user is `vagrant` with the password `vagrant`
 
 **Note**: Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes in your Vagrantfile)
 
