@@ -45,7 +45,8 @@ To run this Vagrant VM, you have to install the following tools:
 ## Known issues
 
 * When 3D acceleration is enabled the use of Chromium is discouraged as it can crash the Virtual Machine
-
+* In VirtualBox 6.0.6 the configured shared folder might currently not work as expected.
+ 
 **Note**: For a commercial project it might be a good idea to pay and use VMware together with Vagrant instead, because the integration with VMware should be more performant and has better support by Vagrant.
 
 ## Authors
