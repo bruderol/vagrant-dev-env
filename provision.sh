@@ -31,6 +31,7 @@ function installAtom() {
 function installOpenJdk() {
   echo "INSTALLING OPENJDK" \
     && sudo dnf -q install -y java-1.8.0-openjdk-devel \
+    && sudo echo "export JAVA_HOME=/usr/lib/jvm/java-openjdk" >> ${HOME_DIR}/.profile \
     && echo "OPENJDK DONE"
 }
 
@@ -80,7 +81,7 @@ function installNvm() {
 }
 
 function installIntelliJ() {
-  local intellijVersion=2019.1
+  local intellijVersion=2020.1
 
   echo "INSTALLING INTELLIJ" \
     && wget -q https://download.jetbrains.com/idea/ideaIU-${intellijVersion}.tar.gz -P ${DOWNLOAD_DIR} \
@@ -103,6 +104,7 @@ StartupWMClass=jetbrains-idea' > ${HOME_DIR}/.local/share/applications/jetbrains
 
 function installDocker() {
   echo "INSTALLING DOCKER" \
+    && echo "ignore following errors about no match for arguments and no packages to remove!" \
     && sudo dnf remove docker \
       docker-client \
       docker-client-latest \
@@ -117,11 +119,11 @@ function installDocker() {
     && sudo dnf config-manager \
       --add-repo \
       https://download.docker.com/linux/fedora/docker-ce.repo \
-    && sudo dnf -q install -y docker-ce docker-ce-cli containerd.io \
+    && sudo dnf -q install -y docker \
     && sudo groupadd docker || true \
     && sudo usermod -aG docker vagrant \
-    && sudo systemctl enable docker \
     && sudo systemctl start docker \
+    && sudo systemctl enable docker \
     && echo "DOCKER DONE"
 }
 
@@ -135,7 +137,7 @@ function installDockerCompose() {
 }
 
 function installGnome() {
-  echo "INSTALLING GNOME (this may take a while)" \
+  echo "INSTALLING GNOME (this may take a long time)" \
     && sudo dnf -q groupinstall -y gnome-desktop base-x \
     && sudo systemctl set-default graphical.target \
     && echo "GNOME DONE"
@@ -160,6 +162,13 @@ function setupPython() {
     && echo "PYTHON DONE"
 }
 
+function setupFavoriteApps() {
+  ##does not work - would need to be hoked into startup script --- too complicated
+  echo "SETTING UP FAVORITE APPS BAR" \
+    && sudo dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'jetbrains-idea.desktop', 'org.gnome.Terminal.desktop']" \
+    && echo "FAVORITE APPS BAR DONE"
+}
+
 function cleanup() {
   echo "CLEAN UP" \
     && sudo rm -rf ${DOWNLOAD_DIR}/* \
@@ -172,10 +181,17 @@ installAtom
 installGit
 installOpenJdk
 installMaven
-# disable gradle, cause download page sometimes tooo slow, and we better use gradle wrapper
+
 # installGradle
+# disable gradle, cause download page sometimes tooo slow, and we better use gradle wrapper anyways
+
 installFirefox
-installOhMyZsh
+
+# installOhMyZsh
+# turned zsh off, becasue only causes troubles:
+# 1. gradle says that JAVA_HOME is wrong
+# 2. lot of output "command not found" when starting normal terminal
+
 installNvm
 installIntelliJ
 installDocker
@@ -184,4 +200,8 @@ installGnome
 setupLocale
 setupWorkspace
 setupPython
+
+# setupFavoriteApps
+# does not work yet - needs to be added to startup script instead
+
 cleanup
