@@ -54,6 +54,7 @@ To increase performance :rocket:
 
 * When 3D acceleration is enabled the use of Chromium is discouraged as it can crash the Virtual Machine.
 * In Virtual Box 6.0.6 the configured shared folder might currently not work as expected.
+* if the download mirror for the base box returns a 404 status: try using a different URL by using the property `config.vm.box_url` in Vagrantfile - see prepared configuration in the file for an alternative URL, that should usually work.
 
 ## Background Information
 
