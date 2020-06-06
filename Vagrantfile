@@ -1,10 +1,10 @@
 Vagrant.require_version ">= 2.2.4"
 
 Vagrant.configure("2") do |config|
+
   config.vm.box = "fedora/29-cloud-base"
   config.vm.box_version = "29.20181024.1"
-  # in case there is a problem with the download mirror - replace the previous line by this:
-  # config.vm.box_url="https://download.fedoraproject.org/pub/fedora/linux/releases/29/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-29-1.2.x86_64.vagrant-virtualbox.box"
+
   config.vm.provider "virtualbox" do |v|
   	v.memory = 6000
   	v.cpus = 2
@@ -15,6 +15,8 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
-   config.vm.provision :shell, path: "provision.sh", privileged: false
-   config.vm.synced_folder "shared/", "/home/vagrant/shared"
+
+  config.vm.provision :shell, path: "provision.sh", privileged: false
+  config.vm.synced_folder "shared/", "/home/vagrant/shared"
+
 end
