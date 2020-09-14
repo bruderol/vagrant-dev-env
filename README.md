@@ -10,8 +10,6 @@
 * Python 3
 * Maven
 * Gradle
-* Docker
-* docker-compose
 * Atom Text Editor
 * Firefox
 * IntelliJ Ultimate
@@ -19,8 +17,8 @@
 ## Prerequisites
 
 To run this Vagrant VM, you have to install the following tools:
-* VirtualBox >= 6.0.4
-* Vagrant >= 2.2.4
+* VirtualBox >= 6.1.14
+* Vagrant >= 2.2.10
 
 ## Getting Started
 
@@ -41,11 +39,6 @@ To run this Vagrant VM, you have to install the following tools:
 2. The default user is `vagrant` with the password `vagrant`
 
 **Note**: Once installed you can as well start and stop the VM directly from VirtualBox UI (unless you do config changes in your Vagrantfile)
-
-## Known issues
-
-* When 3D acceleration is enabled the use of Chromium is discouraged as it can crash the Virtual Machine
-* In VirtualBox 6.0.6 the configured shared folder might currently not work as expected.
  
 **Note**: For a commercial project it might be a good idea to pay and use VMware together with Vagrant instead, because the integration with VMware should be more performant and has better support by Vagrant.
 

@@ -28,31 +28,48 @@ function installAtom() {
     && echo "ATOM DONE"
 }
 
+function installOhMyZsh() {
+  echo "INSTALLING OH MY ZSH" \
+    && sudo dnf -q install -y zsh \
+    && sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+    && sudo usermod -s /bin/zsh vagrant \
+    && mv ${HOME_DIR}/.zshrc-custom  ${HOME_DIR}/.zshrc \
+    && echo "ZSH DONE"
+}
+
+function addToPathAndSource() {
+    local zshEnvFile=${HOME_DIR}/.zshenv
+    echo -e $1 >> ${zshEnvFile} && source ${zshEnvFile}
+}
+
 function installOpenJdk() {
   echo "INSTALLING OPENJDK" \
     && sudo dnf -q install -y java-1.8.0-openjdk-devel \
+    && addToPathAndSource 'export JAVA_HOME=/usr/lib/jvm/java-openjdk' \
     && echo "OPENJDK DONE"
 }
 
 function installMaven() {
-  local mavenVersion=3.6.0
+  local mavenVersion=3.6.3
 
   echo "INSTALLING MAVEN" \
     && wget -q http://www-eu.apache.org/dist/maven/maven-3/${mavenVersion}/binaries/apache-maven-${mavenVersion}-bin.tar.gz -P ${DOWNLOAD_DIR} \
     && sudo mkdir /opt/maven \
     && sudo tar xzf ${DOWNLOAD_DIR}/apache-maven-${mavenVersion}-bin.tar.gz -C /opt/maven --strip-components=1 \
     && sudo chown -R vagrant:vagrant /opt/maven \
+    && addToPathAndSource 'export PATH=$PATH:/opt/maven/bin' \
     && echo "MAVEN DONE"
 }
 
 function installGradle() {
-  local gradleVersion=5.1.1
+  local gradleVersion=6.6.1
 
   echo "INSTALLING GRADLE" \
     && wget -q https://services.gradle.org/distributions/gradle-${gradleVersion}-bin.zip -P ${DOWNLOAD_DIR} \
     && unzip -q ${DOWNLOAD_DIR}/gradle-${gradleVersion}-bin.zip -d ${DOWNLOAD_DIR} \
     && sudo mv ${DOWNLOAD_DIR}/gradle-${gradleVersion} /opt/gradle \
     && sudo chown -R vagrant:vagrant /opt/gradle \
+    && addToPathAndSource 'export PATH=$PATH:/opt/gradle/bin' \
     && echo "GRADLE DONE"
 }
 
@@ -62,25 +79,19 @@ function installFirefox() {
     && echo "FIREFOX DONE"
 }
 
-function installOhMyZsh() {
-  echo "INSTALLING OH MY ZSH" \
-    && sudo dnf -q install -y zsh \
-    && git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME_DIR}/.oh-my-zsh \
-    && cp /vagrant/.zshrc ${HOME_DIR}/.zshrc \
-    && sudo usermod -s /bin/zsh vagrant \
-    && echo "ZSH DONE"
-}
-
 function installNvm() {
-  local nvmVersion=0.34.0
+  local nvmVersion=0.35.3
+  local defaultNodeVersion=14.10.1
 
   echo "INSTALLING NVM" \
     && wget -qO- https://raw.githubusercontent.com/creationix/nvm/v${nvmVersion}/install.sh | bash \
+    && addToPathAndSource 'export NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' \
+    && nvm install ${defaultNodeVersion} \
     && echo "NVM DONE"
 }
 
 function installIntelliJ() {
-  local intellijVersion=2019.1
+  local intellijVersion=2020.2
 
   echo "INSTALLING INTELLIJ" \
     && wget -q https://download.jetbrains.com/idea/ideaIU-${intellijVersion}.tar.gz -P ${DOWNLOAD_DIR} \
@@ -99,39 +110,6 @@ Categories=Development;IDE;
 Terminal=false
 StartupWMClass=jetbrains-idea' > ${HOME_DIR}/.local/share/applications/jetbrains-idea.desktop \
     && echo "INTELLIJ DONE"
-}
-
-function installDocker() {
-  echo "INSTALLING DOCKER" \
-    && sudo dnf remove docker \
-      docker-client \
-      docker-client-latest \
-      docker-common \
-      docker-latest \
-      docker-latest-logrotate \
-      docker-logrotate \
-      docker-selinux \
-      docker-engine-selinux \
-      docker-engine || true \
-    && sudo dnf -q install -y dnf-plugins-core \
-    && sudo dnf config-manager \
-      --add-repo \
-      https://download.docker.com/linux/fedora/docker-ce.repo \
-    && sudo dnf -q install -y docker-ce docker-ce-cli containerd.io \
-    && sudo groupadd docker || true \
-    && sudo usermod -aG docker vagrant \
-    && sudo systemctl enable docker \
-    && sudo systemctl start docker \
-    && echo "DOCKER DONE"
-}
-
-function installDockerCompose() {
-  local dockerComposeVersion=1.24.0
-
-  echo "INSTALLING DOCKER-COMPOSE" \
-    && sudo curl -s -L "https://github.com/docker/compose/releases/download/${dockerComposeVersion}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
-    && sudo chmod +x /usr/local/bin/docker-compose \
-    && echo "DOCKER-COMPOSE DONE"
 }
 
 function installGnome() {
@@ -154,12 +132,6 @@ function setupWorkspace() {
     && echo "WORKSPACE DONE"
 }
 
-function setupPython() {
-  echo "SETTING UP PYTHON" \
-    && sudo ln -s /usr/bin/python3 /usr/bin/python \
-    && echo "PYTHON DONE"
-}
-
 function cleanup() {
   echo "CLEAN UP" \
     && sudo rm -rf ${DOWNLOAD_DIR}/* \
@@ -170,17 +142,14 @@ installWget
 installNano
 installAtom
 installGit
+installOhMyZsh
 installOpenJdk
 installMaven
 installGradle
 installFirefox
-installOhMyZsh
 installNvm
 installIntelliJ
-installDocker
-installDockerCompose
 installGnome
 setupLocale
 setupWorkspace
-setupPython
 cleanup
