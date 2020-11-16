@@ -115,6 +115,7 @@ function installDocker() {
       docker-selinux \
       docker-engine-selinux \
       docker-engine || true \
+    && echo "ALL GOOD: you can ignore any previous messages about not found docker packages!" \
     && sudo dnf -q install -y dnf-plugins-core \
     && sudo dnf config-manager \
       --add-repo \
