@@ -92,11 +92,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export PATH=$PATH:/opt/gradle/bin
-export PATH=$PATH:/opt/maven/bin
-
-export JAVA_HOME=/usr/lib/jvm/java-openjdk
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
