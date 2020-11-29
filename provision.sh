@@ -176,17 +176,22 @@ function cleanup() {
     && echo "CLEAN UP DONE"
 }
 
-installAndUpdateKernel
+# update kernel: maybe needed for guest additions? But maybe not?
+# installAndUpdateKernel
+
 installWget
 installNano
 installAtom
 installGit
-installOhMyZsh
+
+# zsh fuer Vorlesung nicht noetig (manchmal langsam / fehleranfaellig):
+# installOhMyZsh
+
 installOpenJdk
 installMaven
 
+# gradle: disabled beacause we use gradle wrapper and download page is often too slow
 # installGradle
-# disable gradle, cause download page sometimes tooo slow, and we better use gradle wrapper anyways
 
 installFirefox
 
@@ -198,7 +203,7 @@ installGnome
 setupLocale
 setupWorkspace
 
+# favorites: does not work yet - needs to be added to startup script instead
 # setupFavoriteApps
-# does not work yet - needs to be added to startup script instead
 
 cleanup

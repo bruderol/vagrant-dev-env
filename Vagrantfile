@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   	v.name = "Developer Environment"
   	config.vbguest.auto_update = true
     v.customize ["modifyvm", :id, "--vram", "128"]
-    v.customize ["modifyvm", :id, "--accelerate3d", "on"]
+    v.customize ["modifyvm", :id, "--accelerate3d", "off"]
     v.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
